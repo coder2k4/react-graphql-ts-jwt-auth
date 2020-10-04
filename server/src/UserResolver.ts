@@ -1,9 +1,10 @@
-import {Arg, Ctx, Field, Mutation, ObjectType, Query, Resolver, UseMiddleware} from "type-graphql"
+import {Arg, Ctx, Field, Int, Mutation, ObjectType, Query, Resolver, UseMiddleware} from "type-graphql"
 import {User} from "./entity/User";
 import {compare, hash} from "bcryptjs"
 import {sign} from "jsonwebtoken";
 import {MyContext} from "./MyContext";
 import {isAuth} from "./middleware/isAuth";
+import {getConnection} from "typeorm";
 
 
 // Кастомный тип
@@ -34,6 +35,16 @@ export class UserResolver {
     @Query(() => [User])
     users() {
         return User.find();
+    }
+
+
+    @Mutation(() => Boolean)
+    async revokeRefreshTokensForUser(@Arg("userId", () => Int) userId: number) {
+        await getConnection()
+            .getRepository(User)
+            .increment({ id: userId }, "tokenVersion", 1);
+
+        return true;
     }
 
 
