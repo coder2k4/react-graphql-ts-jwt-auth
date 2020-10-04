@@ -1,6 +1,6 @@
 
 
-Commands used:
+Commands used [SERVER]:
 
  - `npm i -g typeorm` install typeorm on your system
  - `typeorm init --name server --database postgres` create server folder with postgres DB
@@ -18,6 +18,8 @@ Commands used:
  - `yarn start` run server
  - `yarn add dotenv` read .env variables
  - `yarn add cookie-parser` cookie parser
+ - `yarn add cors` CORS middleware (Allow access)
+ - `yarn add -D @types/cors` TS types
 
 Playground: 
 
