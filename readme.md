@@ -8,4 +8,11 @@ Commands used:
  - `yarn` same as `npm i`
  - `yarn upgrade-interactive --latest` update all packages for latest versions
  - `yarn add express apollo-server-express graphql` install package's
+ - `yarn add -D @types/graphql @types/express` TS types
+ - `yarn add type-graphql`
  - `yarn start` - run server
+
+
+Playground: 
+
+- `http://localhost:4000/graphql`
