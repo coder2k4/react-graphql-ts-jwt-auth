@@ -16,7 +16,10 @@ Commands used:
  - `yarn add jsonwebtoken` help and validate JWT
  - `yarn add -D @types/jsonwebtoken` TS types
  - `yarn start` run server
+ - `yarn add dotenv` read .env variables
+ - `yarn add cookie-parser` cookie parser
 
 Playground: 
 
 - `http://localhost:4000/graphql`
+- `"request.credentials": "include",` - setup to get cookies

@@ -4,11 +4,15 @@ import {ApolloServer} from "apollo-server-express";
 import {UserResolver} from "./UserResolver";
 import {buildSchema} from "type-graphql";
 import {createConnection} from "typeorm";
-
+import "dotenv/config"
 // import {User} from "./entity/User";
 
 
 (async () => {
+
+    // console.log(process.env.ACCESS_TOKEN_SECRET)
+    // console.log(process.env.REFRESH_TOKEN_SECRET)
+
     const app = express()
     app.get("/", (_req, res) => res.send("Im on!"))
 
@@ -17,13 +21,14 @@ import {createConnection} from "typeorm";
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
             resolvers: [UserResolver]
-        })
+        }),
+        context: ({ req, res }) => ({ req, res })
     })
 
     apolloServer.applyMiddleware({app})
 
 
-    app.listen(4000, () => {
+    app.listen(4001, () => {
         console.log('Server start at http://localhost:4000')
     })
 })()
