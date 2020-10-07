@@ -24,7 +24,6 @@ import cors from "cors"
     app.use(cors({
         origin: '*',
         credentials: true,
-
     }))
     app.use(cookieParser())
     app.get("/", (_req, res) => res.send("Im on!"))
